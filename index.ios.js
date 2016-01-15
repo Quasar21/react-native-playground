@@ -20,7 +20,6 @@ class App extends Component {
             switch(route.name) {
             case "whatever":
             default:
-              Navigator.SceneConfigs.FloatFromLeft;
               return (
                 <Scene name={route.name}
                     onForward={() => {
