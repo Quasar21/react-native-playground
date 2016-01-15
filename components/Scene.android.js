@@ -2,7 +2,7 @@
 import React, {
   Component,
   Text,
-  TouchableHighlight,
+  TouchableNativeFeedback,
   View
 } from 'react-native';
 import styles from "../styles/Stylesheet.js";
@@ -14,16 +14,16 @@ class Scene extends Component {
         <Text style={styles.title}>
           {this.props.name}
         </Text>
-        <TouchableHighlight onPress={this.props.onForward}>
+        <TouchableNativeFeedback onPress={this.props.onForward}>
           <Text style={styles.button}>
             Next scene
           </Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this.props.onBack}>
+        </TouchableNativeFeedback>
+        <TouchableNativeFeedback onPress={this.props.onBack}>
           <Text style={styles.button}>
             Back scene
           </Text>
-        </TouchableHighlight>
+        </TouchableNativeFeedback>
       </View>
     );
   }
