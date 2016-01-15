@@ -1,51 +1,61 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
 'use strict';
+
 import React, {
   AppRegistry,
   Component,
-  StyleSheet,
-  Text,
-  View
+  Navigator
 } from 'react-native';
 
-class RNPlayground extends Component {
+import Navbar from "./components/Navbar.js";
+import Scene from "./components/Scene.js";
+import styles from "./styles/Stylesheet.js";
+
+const BaseConfig = Navigator.SceneConfigs.FloatFromBottom;
+const CustomGesture = Object.assign({}, BaseConfig.gestures.pop, {
+  snapVelocity: 6,
+});
+const CustomSceneConfig = Object.assign({}, BaseConfig, {
+  springTension: 100,
+  springFriction: 6,
+  gestures: {
+    pop: CustomGesture
+  }
+});
+
+console.log(BaseConfig);
+
+class App extends Component {
+  _renderScene(route, navigator) {
+    return (
+      <Scene name={route.name}
+          onForward={() => {
+            let nextIndex = route.index + 1;
+            navigator.push({
+              name: 'Scene' + nextIndex,
+              index: nextIndex
+            });
+          }}
+          onBack={() => {
+            if (route.index > 0) {
+              navigator.pop();
+            }
+          }}
+      />
+    );
+  }
+  _configureScene() {
+    return CustomSceneConfig;
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Navigator
+        initialRoute={{name: "Scene", index: 0}}
+        navigationBar={<Navbar/>}
+        renderScene={this._renderScene}
+        configureScene={this._configureScene}
+      />
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('RNPlayground', () => RNPlayground);
+AppRegistry.registerComponent('RNPlayground', () => App);
