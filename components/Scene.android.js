@@ -15,14 +15,18 @@ class Scene extends Component {
           {this.props.name}
         </Text>
         <TouchableNativeFeedback onPress={this.props.onForward}>
-          <Text style={styles.button}>
-            Next scene
-          </Text>
+          <View>
+            <Text style={styles.button}>
+              Next scene
+            </Text>
+          </View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback onPress={this.props.onBack}>
-          <Text style={styles.button}>
-            Back scene
-          </Text>
+          <View>
+            <Text style={styles.button}>
+              Back scene
+            </Text>
+          </View>
         </TouchableNativeFeedback>
       </View>
     );
