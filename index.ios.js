@@ -22,8 +22,6 @@ const CustomSceneConfig = Object.assign({}, BaseConfig, {
   }
 });
 
-console.log(BaseConfig);
-
 class App extends Component {
   _renderScene(route, navigator) {
     return (
