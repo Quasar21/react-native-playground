@@ -7,7 +7,7 @@ import React, {
 } from 'react-native';
 
 import Navbar from "./components/Navbar.js";
-import Scene from "./components/Scene.js";
+import Scene from "./components/Scene";
 import styles from "./styles/Stylesheet.js";
 
 const BaseConfig = Navigator.SceneConfigs.FloatFromBottom;
