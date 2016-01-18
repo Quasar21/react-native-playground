@@ -1,5 +1,3 @@
-'use strict';
-
 import React, {
   AppRegistry,
   Component,
@@ -25,20 +23,7 @@ const CustomSceneConfig = Object.assign({}, BaseConfig, {
 class App extends Component {
   _renderScene(route, navigator) {
     return (
-      <Scene name={route.name}
-          onForward={() => {
-            let nextIndex = route.index + 1;
-            navigator.push({
-              name: 'Scene' + nextIndex,
-              index: nextIndex
-            });
-          }}
-          onBack={() => {
-            if (route.index > 0) {
-              navigator.pop();
-            }
-          }}
-      />
+      <Scene name={route.name}/>
     );
   }
   _configureScene() {
@@ -47,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{name: "Scene", index: 0}}
+        initialRoute={{name: "Scene1", index: 1}}
         navigationBar={<Navbar/>}
         renderScene={this._renderScene}
         configureScene={this._configureScene}
