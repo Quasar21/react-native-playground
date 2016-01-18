@@ -14,16 +14,6 @@ class Scene extends Component {
         <Text style={styles.title}>
           {this.props.name}
         </Text>
-        <TouchableOpacity onPress={this.props.onForward}>
-          <Text style={styles.button}>
-            Next scene
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.props.onBack}>
-          <Text style={styles.button}>
-            Back scene
-          </Text>
-        </TouchableOpacity>
       </View>
     );
   }
