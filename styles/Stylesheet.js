@@ -8,14 +8,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#000000'
   },
+  navbarContainer: {
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    flexWrap: 'nowrap'
+  },
   button: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: '#FFFFFF',
     backgroundColor: '#4E6E5E',
     borderRadius: 4,
     margin: 10,
     padding: 5
+  },
+  buttonText: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: '#FFFFFF'
   },
   title: {
     textAlign: 'center',
