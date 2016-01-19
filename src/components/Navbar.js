@@ -11,7 +11,7 @@ class Navbar extends Component {
     }
     navigator.push({
       name: `Scene` + index,
-      index: index
+      index: index,
     });
   }
   render() {
@@ -37,5 +37,9 @@ class Navbar extends Component {
     );
   }
 }
+
+Navbar.propTypes = {
+ navigator: React.propTypes.object,
+};
 
 export default Navbar;
