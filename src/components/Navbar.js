@@ -1,34 +1,30 @@
 import React, { Component, Text, View, TouchableOpacity, } from 'react-native';
 import styles from '../styles/Stylesheet.js';
 
+import { BUTTON_SCENE, IMAGE_SCENE, } from './Scenes/SceneIndexes.js';
+
 class Navbar extends Component {
-  _OnPress(index) {
+  _OnPress(sceneID) {
     let navigator = this.props.navigator;
-    let route = navigator.getCurrentRoutes();
-    console.log(route);
-    if (route.index > 0) {
-      navigator.pop();
-    }
     navigator.push({
-      name: `Scene` + index,
-      index: index,
+      index: sceneID,
     });
   }
   render() {
     console.log(this.props.navigator);
     return (
       <View style={styles.navbarContainer}>
-        <TouchableOpacity onPress={() => this._OnPress(1)}>
+        <TouchableOpacity onPress={() => this._OnPress(BUTTON_SCENE)}>
           <Text style={styles.button}>
-            Scene1
+            Button Scene
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._OnPress(2)}>
+        <TouchableOpacity onPress={() => this._OnPress(IMAGE_SCENE)}>
           <Text style={styles.button}>
-            Scene2
+            Image Scene
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._OnPress(3)}>
+        <TouchableOpacity onPress={() => this._OnPress(BUTTON_SCENE)}>
           <Text style={styles.button}>
             Scene3
           </Text>
