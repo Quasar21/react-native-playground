@@ -39,7 +39,7 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
- navigator: React.propTypes.object,
+  navigator: React.PropTypes.object,
 };
 
 export default Navbar;
