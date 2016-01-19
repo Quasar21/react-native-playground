@@ -1,5 +1,5 @@
-import React, { Component, Text, View, TouchableOpacity } from 'react-native';
-import styles from "../styles/Stylesheet.js";
+import React, { Component, Text, View, TouchableOpacity, } from 'react-native';
+import styles from '../styles/Stylesheet.js';
 
 class Navbar extends Component {
   _OnPress(index) {
@@ -10,7 +10,7 @@ class Navbar extends Component {
       navigator.pop();
     }
     navigator.push({
-      name: 'Scene' + index,
+      name: `Scene` + index,
       index: index
     });
   }
