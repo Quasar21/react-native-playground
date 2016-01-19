@@ -1,11 +1,9 @@
-'use strict';
 import React, {
   Component,
   Text,
-  TouchableOpacity,
-  View
+  View,
 } from 'react-native';
-import styles from "../styles/Stylesheet.js";
+import styles from '../styles/Stylesheet.js';
 
 class Scene extends Component {
   render() {
