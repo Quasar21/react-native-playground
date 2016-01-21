@@ -5,6 +5,7 @@ import React, {
   TouchableHighlight,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  TouchableNativeFeedback,
 } from 'react-native';
 import styles from '../../styles/Stylesheet.js';
 
@@ -36,6 +37,28 @@ class ButtonScene extends Component {
       </TouchableWithoutFeedback>
     );
   }
+  _renderTouchableWithoutFeedback(text) {
+    return (
+      <TouchableWithoutFeedback style={styles.button}>
+        <Text style={styles.buttonText}>
+          {text}
+        </Text>
+      </TouchableWithoutFeedback>
+    );
+  }
+  _renderTouchableNativeFeedback(text) {
+    var {Platform,} = React;
+    if(Platform.OS === `ios`) {
+      return this._renderTouchableHighlight(text); // fallback for ios
+    }
+    return (
+      <TouchableNativeFeedback style={styles.button}>
+        <Text style={styles.buttonText}>
+          {text}
+        </Text>
+      </TouchableNativeFeedback>
+    );
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -46,6 +69,7 @@ class ButtonScene extends Component {
           {this._renderTouchableHighlight(`Highlight`)}
           {this._renderTouchableOpacity(`Opacity`)}
           {this._renderTouchableWithoutFeedback(`Without Feedback`)}
+          {this._renderTouchableNativeFeedback(`Native Feedback`)}
         </View>
       </View>
     );
