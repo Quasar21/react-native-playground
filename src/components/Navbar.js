@@ -6,6 +6,10 @@ import { BUTTON_SCENE, IMAGE_SCENE, } from './Scenes/SceneIndexes.js';
 class Navbar extends Component {
   _OnPress(sceneID) {
     let navigator = this.props.navigator;
+    let routes = navigator.getCurrentRoutes();
+    if(routes[routes.length-1].index === sceneID) {
+      return;
+    }
     navigator.push({
       index: sceneID,
     });
