@@ -30,6 +30,10 @@ const styles = StyleSheet.create({
     fontSize: 30,
     margin: 10,
   },
+  image: {
+    width: 80,
+    height: 71,
+  },
 });
 
 export default styles;
