@@ -15,7 +15,6 @@ class Navbar extends Component {
     });
   }
   render() {
-    console.log(this.props.navigator);
     return (
       <View style={styles.navbarContainer}>
         <TouchableOpacity onPress={() => this._OnPress(BUTTON_SCENE)}>
