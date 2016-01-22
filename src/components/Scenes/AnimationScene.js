@@ -34,7 +34,6 @@ class AnimationScene extends Component {
     ]).start();
   }
   render() {
-    console.log(this.state);
     return (
       <View style={styles.container}>
         <Animated.Text style={{
