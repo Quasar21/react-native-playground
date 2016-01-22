@@ -1,7 +1,11 @@
 import React, { Component, Text, View, TouchableOpacity, } from 'react-native';
 import styles from '../styles/Stylesheet.js';
 
-import { BUTTON_SCENE, IMAGE_SCENE, } from './Scenes/SceneIndexes.js';
+import {
+  BUTTON_SCENE,
+  IMAGE_SCENE,
+  ANIMATION_SCENE,
+} from './Scenes/SceneIndexes.js';
 
 class Navbar extends Component {
   _OnPress(sceneID) {
@@ -19,17 +23,17 @@ class Navbar extends Component {
       <View style={styles.navbarContainer}>
         <TouchableOpacity onPress={() => this._OnPress(BUTTON_SCENE)}>
           <Text style={styles.button}>
-            Button Scene
+            Button
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this._OnPress(IMAGE_SCENE)}>
           <Text style={styles.button}>
-            Image Scene
+            Image
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._OnPress(BUTTON_SCENE)}>
+        <TouchableOpacity onPress={() => this._OnPress(ANIMATION_SCENE)}>
           <Text style={styles.button}>
-            Scene3
+            Animation
           </Text>
         </TouchableOpacity>
       </View>
