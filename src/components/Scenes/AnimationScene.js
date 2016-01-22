@@ -1,5 +1,6 @@
 import React, {
   Animated,
+  Easing,
   Component,
   Text,
   View,
@@ -8,17 +9,29 @@ import styles from '../../styles/Stylesheet.js';
 
 class AnimationScene extends Component {
   state = {
-    fontSize: new Animated.Value(20),
+    fontSize: new Animated.Value(0),
   };
   constructor(props: any) {
     super(props);
-    Animated.spring(                          // Base: spring, decay, timing
-      this.state.fontSize,                 // Animate `bounceValue`
-      {
-        toValue: 30,                         // Animate to smaller size
-        friction: 1,                          // Bouncier spring
-      }
-    ).start();
+    Animated.sequence([
+      Animated.spring(
+        this.state.fontSize,
+        {
+          toValue: 30,
+          friction: 1,
+          tension: 60,
+        }
+      ),
+      Animated.timing(
+        this.state.fontSize,
+        {
+          toValue: 0,
+          duration: 5000,
+          delay: 0,
+          easing: Easing.inOut(Easing.linear),
+        }
+      ),
+    ]).start();
   }
   render() {
     console.log(this.state);
