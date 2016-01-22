@@ -25,8 +25,4 @@ class ImageScene extends Component {
   }
 }
 
-ImageScene.propTypes = {
-  name: React.PropTypes.string,
-};
-
 export default ImageScene;
