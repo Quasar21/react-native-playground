@@ -76,8 +76,4 @@ class ButtonScene extends Component {
   }
 }
 
-ButtonScene.propTypes = {
-  name: React.PropTypes.string,
-};
-
 export default ButtonScene;
