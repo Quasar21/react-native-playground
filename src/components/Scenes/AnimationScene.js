@@ -7,6 +7,8 @@ import React, {
 } from 'react-native';
 import styles from '../../styles/Stylesheet.js';
 
+const MyAnimatedText = Animated.createAnimatedComponent(Text);
+
 class AnimationScene extends Component {
   state = {
     fontSize: new Animated.Value(0),
@@ -36,7 +38,7 @@ class AnimationScene extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Animated.Text style={{
+        <MyAnimatedText style={{
           textAlign: `center`,
           color: `#333333`,
           fontSize: this.state.fontSize,
@@ -44,7 +46,7 @@ class AnimationScene extends Component {
         }}
         >
           Animation Scene
-        </Animated.Text >
+        </MyAnimatedText>
       </View>
     );
   }
