@@ -5,6 +5,7 @@ import {
   BUTTON_SCENE,
   IMAGE_SCENE,
   ANIMATION_SCENE,
+  GESTURE_SCENE,
 } from './Scenes/SceneIndexes.js';
 
 class Navbar extends Component {
@@ -32,6 +33,11 @@ class Navbar extends Component {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this._OnPress(ANIMATION_SCENE)}>
+          <Text style={styles.button}>
+            Animation
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this._OnPress(GESTURE_SCENE)}>
           <Text style={styles.button}>
             Animation
           </Text>
