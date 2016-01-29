@@ -3,10 +3,13 @@ import Navbar from './components/Navbar.js';
 import ButtonScene from './components/Scenes/ButtonScene.js';
 import ImageScene from './components/Scenes/ImageScene.js';
 import AnimationScene from './components/Scenes/AnimationScene.js';
+import GestureScene from './components/Scenes/GestureScene.js';
+
 import {
   BUTTON_SCENE,
   IMAGE_SCENE,
   ANIMATION_SCENE,
+  GESTURE_SCENE,
 } from './components/Scenes/SceneIndexes.js';
 
 const BaseConfig = Navigator.SceneConfigs.FloatFromBottom;
@@ -28,10 +31,12 @@ class App extends Component {
       case IMAGE_SCENE:
       return <ImageScene/>;
       case ANIMATION_SCENE:
-      return <AnimationScene/>
+      return <AnimationScene/>;
       case BUTTON_SCENE:
-      default:
       return <ButtonScene/>;
+      case GESTURE_SCENE:
+      default:
+      return <GestureScene/>;
     }
   }
   _configureScene() {
@@ -41,7 +46,7 @@ class App extends Component {
     return (
       <Navigator
         configureScene={this._configureScene}
-        initialRoute={{index: 1,}}
+        initialRoute={{index: -1,}}
         navigationBar={<Navbar/>}
         renderScene={this._renderScene}
       />
