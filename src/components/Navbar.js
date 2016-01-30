@@ -39,7 +39,7 @@ class Navbar extends Component {
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this._OnPress(GESTURE_SCENE)}>
           <Text style={styles.button}>
-            Animation
+            Gestures
           </Text>
         </TouchableOpacity>
       </View>
