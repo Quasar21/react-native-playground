@@ -6,74 +6,71 @@ import React, {
 } from 'react-native';
 import styles from '../../styles/Stylesheet.js';
 
+
 class GestureScene extends Component {
+  _panResponder = {};
+  _previousLeft = 0;
+  _previousTop = 0;
+  _viewStyles = {};
+  view = (null : ?{ setNativeProps(props: Object): void });
+
   constructor(props: any) {
     super(props);
+    this._previousLeft = 20;
+    this._previousTop = 84;
+    this._viewStyles = {
+      style: {
+        left: this._previousLeft,
+        top: this._previousTop,
+      },
+    };
     this._panResponder = PanResponder.create({
-      // Ask to be the responder:
-      onStartShouldSetPanResponder:        () => true,
-      onStartShouldSetPanResponderCapture: () => true,
-      onMoveShouldSetPanResponder:         () => true,
-      onMoveShouldSetPanResponderCapture:  () => true,
-      onPanResponderTerminationRequest:    () => true,
-      onShouldBlockNativeResponder:        () => true,
-
-      onPanResponderGrant: (evt, gestureState) => {
-        // The guesture has started. Show visual feedback so the user knows
-        // what is happening!
-        console.log(`Gesture started`);
-        console.log(`event`);
-        console.log(evt);
-        console.log(`Gesture State`);
-        console.log(gestureState);
-        // gestureState.{x,y}0 will be set to zero now
-      },
-      onPanResponderMove: (evt, gestureState) => {
-        // The most recent move distance is gestureState.move{X,Y}
-        console.log(`Move`);
-        console.log(`event`);
-        console.log(evt);
-        console.log(`Gesture State`);
-        console.log(gestureState);
-        // The accumulated gesture distance since becoming responder is
-        // gestureState.d{x,y}
-      },
-      onPanResponderRelease: (evt, gestureState) => {
-        // The user has released all touches while this view is the
-        // responder. This typically means a gesture has succeeded
-        console.log(`Gesture released`);
-        console.log(`event`);
-        console.log(evt);
-        console.log(`Gesture State`);
-        console.log(gestureState);
-      },
-      onPanResponderTerminate: (evt, gestureState) => {
-        // Another component has become the responder, so this gesture
-        // should be cancelled
-        console.log(`onPanResponderTerminate`);
-        console.log(`event`);
-        console.log(evt);
-        console.log(`Gesture State`);
-        console.log(gestureState);
-      },
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderMove: this._handlePanResponderMove,
+      onPanResponderRelease: this._handlePanResponderEnd,
+      onPanResponderTerminate: this._handlePanResponderEnd,
     });
   }
+
+  componentDidMount() {
+    this._updatePosition();
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
           Gesture Scene
         </Text>
-        <View style={styles.container}
+        <View
+          ref={(view) => {
+            this.view = view;
+          }}
+          style={styles.container}
           {...this._panResponder.panHandlers}
         >
           <Text style={styles.title}>
-            I understand gesutres
+            I understand gestures
           </Text>
         </View>
       </View>
     );
   }
+
+  _updatePosition() {
+    this.view && this.view.setNativeProps(this._viewStyles);
+  }
+
+  _handlePanResponderMove = (e: Object, gestureState: Object) => {
+    this._viewStyles.style.left = this._previousLeft + gestureState.dx;
+    this._viewStyles.style.top  = this._previousTop + gestureState.dy;
+    this._updatePosition();
+  };
+  _handlePanResponderEnd = (e: Object, gestureState: Object) => {
+    this._previousLeft += gestureState.dx;
+    this._previousTop += gestureState.dy;
+  };
 }
 
 export default GestureScene;
