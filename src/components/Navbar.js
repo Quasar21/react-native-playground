@@ -48,7 +48,11 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  navigator: React.PropTypes.object,
+  navigator: function(props, propName) {
+    if (!/function/.test(props[propName].getCurrentRoutes)) {
+       return new Error(`Validation failed!`);
+     }
+  },
 };
 
 export default Navbar;
