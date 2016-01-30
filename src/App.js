@@ -46,7 +46,7 @@ class App extends Component {
     return (
       <Navigator
         configureScene={this._configureScene}
-        initialRoute={{index: -1,}}
+        initialRoute={{index: GESTURE_SCENE,}}
         navigationBar={<Navbar/>}
         renderScene={this._renderScene}
       />
