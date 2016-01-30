@@ -47,7 +47,6 @@ class GestureScene extends Component {
           ref={(view) => {
             this.view = view;
           }}
-          style={styles.container}
           {...this._panResponder.panHandlers}
         >
           <Text style={styles.title}>
