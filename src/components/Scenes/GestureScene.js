@@ -6,6 +6,8 @@ import React, {
 } from 'react-native';
 import styles from '../../styles/Stylesheet.js';
 
+const ACTIVE_COLOR = `rgba(1, 255, 255, 0.5)`;
+const REGULAR_COLOR = `rgba(255, 255, 255, 1.0)`;
 
 class GestureScene extends Component {
   _panResponder = {};
@@ -22,11 +24,15 @@ class GestureScene extends Component {
       style: {
         left: this._previousLeft,
         top: this._previousTop,
+        backgroundColor: REGULAR_COLOR,
+        margin: 10,
+        borderRadius: 5,
       },
     };
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
+      onPanResponderGrant: this._handleResponderGrant,
       onPanResponderMove: this._handlePanResponderMove,
       onPanResponderRelease: this._handlePanResponderEnd,
       onPanResponderTerminate: this._handlePanResponderEnd,
@@ -34,7 +40,7 @@ class GestureScene extends Component {
   }
 
   componentDidMount() {
-    this._updatePosition();
+    this._updateProps();
   }
 
   render() {
@@ -57,18 +63,27 @@ class GestureScene extends Component {
     );
   }
 
-  _updatePosition() {
+  _updateProps() {
     this.view && this.view.setNativeProps(this._viewStyles);
   }
 
-  _handlePanResponderMove = (e: Object, gestureState: Object) => {
-    this._viewStyles.style.left = this._previousLeft + gestureState.dx;
-    this._viewStyles.style.top  = this._previousTop + gestureState.dy;
-    this._updatePosition();
+
+  _handleResponderGrant = () => {
+    this._viewStyles.style.backgroundColor = ACTIVE_COLOR;
+    this._updateProps();
   };
-  _handlePanResponderEnd = (e: Object, gestureState: Object) => {
-    this._previousLeft += gestureState.dx;
-    this._previousTop += gestureState.dy;
+
+  _handlePanResponderMove = (e: Object, {dx, dy,}) => {
+    this._viewStyles.style.left = this._previousLeft + dx;
+    this._viewStyles.style.top  = this._previousTop + dy;
+    this._updateProps();
+  };
+
+  _handlePanResponderEnd = (e: Object, {dx, dy,}) => {
+    this._previousLeft += dx;
+    this._previousTop += dy;
+    this._viewStyles.style.backgroundColor = REGULAR_COLOR;
+    this._updateProps();
   };
 }
 
